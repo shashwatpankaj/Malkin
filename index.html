@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>I'm Sorry ❤️</title>
 
 <style>
 
 body{
-font-family:Arial;
+margin:0;
+font-family:Arial, sans-serif;
 text-align:center;
 background:linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
+color:#7a2a4d;
+}
+
+.container{
 margin-top:80px;
 }
 
 h1{
 font-size:40px;
-color:#7a2a4d;
 }
 
 button{
-padding:15px 30px;
+padding:14px 30px;
 font-size:18px;
 border:none;
 border-radius:25px;
-margin:10px;
 cursor:pointer;
+margin:15px;
 }
 
 #yes{
@@ -37,19 +42,25 @@ background:#6c63ff;
 color:white;
 }
 
+#images{
+margin:30px auto;
+}
+
 img{
 width:220px;
-margin-top:30px;
 border-radius:20px;
 }
 
 #apology{
 display:none;
-max-width:600px;
+max-width:700px;
 margin:40px auto;
+font-size:20px;
+line-height:1.6;
 background:white;
 padding:30px;
 border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 </style>
@@ -58,52 +69,82 @@ border-radius:15px;
 
 <body>
 
-<h1 id="text">Still angry? 🥺👉👈</h1>
+<div class="container">
 
-<img id="gif" src="1.gif">
+<h1 id="question">Still angry? 🥺👉👈</h1>
 
-<br>
+<div id="images">
+<img id="sticker" src="1.gif">
+</div>
 
-<button onclick="nextGif()" id="yes">Yes</button>
-<button onclick="forgive()" id="no">No</button>
+<button id="yes" onclick="stillAngry()">Yes</button>
+<button id="no" onclick="forgive()">No</button>
+
+</div>
 
 <div id="apology">
 
 <h2>Yay ❤️ She forgave me</h2>
 
-<p>I know I might have hurt you and I'm really sorry.</p>
-<p>You mean a lot to me and I never want to make you sad.</p>
-<p>I promise to be better and make you smile again.</p>
+<p>
+I know I might have hurt you and I'm truly sorry for that.
+Seeing you upset because of me honestly makes me feel terrible.
+</p>
 
-<p><b>Forever yours ❤️</b></p>
+<p>
+You mean a lot to me and I never want to be the reason
+for your sadness.
+</p>
+
+<p>
+If I could undo what happened, I would without thinking twice.
+But what I can promise is that I will try harder to be better,
+more patient and more understanding.
+</p>
+
+<p>
+You are someone really special in my life and I value you deeply.
+</p>
+
+<p>
+I truly hope you can forgive me.
+</p>
+
+<p><strong>Forever yours ❤️</strong></p>
 
 </div>
 
 <script>
 
-let clickCount = 0;
+let count = 0;
 
-function nextGif(){
+function stillAngry(){
 
-clickCount++;
+count++;
 
-let number = (clickCount % 8) + 1;
+/* change sticker */
 
-document.getElementById("gif").src = number + ".gif";
+let imgNumber = (count % 8) + 1;
 
-if(clickCount >= 10){
-document.getElementById("text").innerText =
-"I deserve this but I'm really sorry 😭";
+document.getElementById("sticker").src = imgNumber + ".gif";
+
+/* change text */
+
+if(count >= 10){
+document.getElementById("question").innerHTML = "I deserve this but I'm really sorry 😭";
 }
-else if(clickCount >= 5){
-document.getElementById("text").innerText =
-"Okay okay I get it you're angry 🥲";
+else if(count >= 5){
+document.getElementById("question").innerHTML = "Okay okay I get it you're angry 🥲";
+}
+else{
+document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
 }
 
 }
 
 function forgive(){
 
+document.querySelector(".container").style.display="none";
 document.getElementById("apology").style.display="block";
 
 }
