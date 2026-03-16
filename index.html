@@ -1,99 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Sorry Page</title>
+<title>I'm Sorry ❤️</title>
 
 <style>
 
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:linear-gradient(to bottom,#f5a3b3,#f2b6a3);
-    font-family:Arial;
-    overflow:hidden;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
+margin-top:80px;
 }
 
 h1{
-    color:#7a2e40;
-}
-
-#stickerArea{
-    position:relative;
-    width:90%;
-    height:70vh;
-}
-
-.sticker{
-    position:absolute;
-    width:120px;
+font-size:40px;
+color:#7a2a4d;
 }
 
 button{
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:10px;
-    background:#ff6b81;
-    color:white;
-    cursor:pointer;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:25px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff4d88;
+color:white;
+}
+
+#no{
+background:#6c63ff;
+color:white;
+}
+
+img{
+width:220px;
+margin-top:30px;
+border-radius:20px;
+}
+
+#apology{
+display:none;
+max-width:600px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:15px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>Still angry? 🥺👉👈</h1>
+<h1 id="text">Still angry? 🥺👉👈</h1>
 
-<button onclick="addSticker()">Click if still angry</button>
+<img id="gif" src="1.gif">
 
-<div id="stickerArea"></div>
+<br>
+
+<button onclick="nextGif()" id="yes">Yes</button>
+<button onclick="forgive()" id="no">No</button>
+
+<div id="apology">
+
+<h2>Yay ❤️ She forgave me</h2>
+
+<p>I know I might have hurt you and I'm really sorry.</p>
+<p>You mean a lot to me and I never want to make you sad.</p>
+<p>I promise to be better and make you smile again.</p>
+
+<p><b>Forever yours ❤️</b></p>
+
+</div>
 
 <script>
 
-const stickers = [
-"https://media.tenor.com/1.gif",
-"https://media.tenor.com/2.gif",
-"https://media.tenor.com/3.gif",
-"https://media.tenor.com/4.gif",
-"https://media.tenor.com/5.gif",
-"https://media.tenor.com/6.gif",
-"https://media.tenor.com/7.gif",
-"https://media.tenor.com/8.gif",
-"https://media.tenor.com/9.gif",
-"https://media.tenor.com/10.gif"
-];
-
 let clickCount = 0;
 
-function addSticker(){
+function nextGif(){
 
-    if(clickCount >= 10){
-        alert("Okay okay 😭 I said sorry enough times");
-        return;
-    }
+clickCount++;
 
-    const img = document.createElement("img");
+let number = (clickCount % 8) + 1;
 
-    img.src = stickers[clickCount];
-    img.className = "sticker";
+document.getElementById("gif").src = number + ".gif";
 
-    const area = document.getElementById("stickerArea");
+if(clickCount >= 10){
+document.getElementById("text").innerText =
+"I deserve this but I'm really sorry 😭";
+}
+else if(clickCount >= 5){
+document.getElementById("text").innerText =
+"Okay okay I get it you're angry 🥲";
+}
 
-    const x = Math.random() * (area.clientWidth - 120);
-    const y = Math.random() * (area.clientHeight - 120);
+}
 
-    img.style.left = x + "px";
-    img.style.top = y + "px";
+function forgive(){
 
-    area.appendChild(img);
+document.getElementById("apology").style.display="block";
 
-    clickCount++;
 }
 
 </script>
