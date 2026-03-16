@@ -43,17 +43,12 @@ color:white;
 }
 
 #images{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-max-width:900px;
-margin:20px auto;
+margin:30px auto;
 }
 
 img{
-width:160px;
+width:220px;
 border-radius:20px;
-margin:10px;
 }
 
 #apology{
@@ -78,7 +73,9 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 <h1 id="question">Still angry? 🥺👉👈</h1>
 
-<div id="images"></div>
+<div id="images">
+<img id="sticker" src="1.gif">
+</div>
 
 <button id="yes" onclick="stillAngry()">Yes</button>
 <button id="no" onclick="forgive()">No</button>
@@ -87,7 +84,7 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 <div id="apology">
 
-<h2>Yay ❤️ Finally you forgave me</h2>
+<h2>Yay ❤️ She forgave me</h2>
 
 <p>
 I know I might have hurt you and I'm truly sorry for that.
@@ -125,11 +122,13 @@ function stillAngry(){
 
 count++;
 
-const img = document.createElement("img");
+/* change sticker */
 
-img.src = (count % 8 + 1) + ".gif";
+let imgNumber = (count % 8) + 1;
 
-document.getElementById("images").appendChild(img);
+document.getElementById("sticker").src = imgNumber + ".gif";
+
+/* change text */
 
 if(count >= 10){
 document.getElementById("question").innerHTML = "I deserve this but I'm really sorry 😭";
