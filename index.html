@@ -42,13 +42,10 @@ background:#6c63ff;
 color:white;
 }
 
-#images{
-margin:30px auto;
-}
-
 img{
 width:220px;
 border-radius:20px;
+margin-top:30px;
 }
 
 #apology{
@@ -64,7 +61,6 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 </style>
-
 </head>
 
 <body>
@@ -73,9 +69,9 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 <h1 id="question">Still angry? 🥺👉👈</h1>
 
-<div id="images">
 <img id="sticker" src="1.gif">
-</div>
+
+<br>
 
 <button id="yes" onclick="stillAngry()">Yes</button>
 <button id="no" onclick="forgive()">No</button>
@@ -86,29 +82,9 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 <h2>Yay ❤️ She forgave me</h2>
 
-<p>
-I know I might have hurt you and I'm truly sorry for that.
-Seeing you upset because of me honestly makes me feel terrible.
-</p>
-
-<p>
-You mean a lot to me and I never want to be the reason
-for your sadness.
-</p>
-
-<p>
-If I could undo what happened, I would without thinking twice.
-But what I can promise is that I will try harder to be better,
-more patient and more understanding.
-</p>
-
-<p>
-You are someone really special in my life and I value you deeply.
-</p>
-
-<p>
-I truly hope you can forgive me.
-</p>
+<p>I know I might have hurt you and I'm really sorry.</p>
+<p>You mean a lot to me and I never want to make you sad.</p>
+<p>I promise to do better and make you smile again.</p>
 
 <p><strong>Forever yours ❤️</strong></p>
 
@@ -116,36 +92,37 @@ I truly hope you can forgive me.
 
 <script>
 
-let count = 0;
+let count = 1;
 
 function stillAngry(){
 
 count++;
 
-/* change sticker */
+if(count > 8){
+count = 1;
+}
 
-let imgNumber = (count % 8) + 1;
-
-document.getElementById("sticker").src = imgNumber + ".gif";
-
-/* change text */
+document.getElementById("sticker").src = count + ".gif";
 
 if(count >= 10){
-document.getElementById("question").innerHTML = "I deserve this but I'm really sorry 😭";
+document.getElementById("question").innerText =
+"I deserve this but I'm really sorry 😭";
 }
 else if(count >= 5){
-document.getElementById("question").innerHTML = "Okay okay I get it you're angry 🥲";
+document.getElementById("question").innerText =
+"Okay okay I get it you're angry 🥲";
 }
 else{
-document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
+document.getElementById("question").innerText =
+"Still angry? 🥺👉👈";
 }
 
 }
 
 function forgive(){
 
-document.querySelector(".container").style.display="none";
-document.getElementById("apology").style.display="block";
+document.querySelector(".container").style.display = "none";
+document.getElementById("apology").style.display = "block";
 
 }
 
