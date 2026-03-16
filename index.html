@@ -13,7 +13,6 @@ font-family:Arial, sans-serif;
 text-align:center;
 background:linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
 color:#7a2a4d;
-overflow-x:hidden;
 }
 
 .container{
@@ -43,8 +42,16 @@ background:#6c63ff;
 color:white;
 }
 
+#images{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+max-width:900px;
+margin:20px auto;
+}
+
 img{
-width:200px;
+width:160px;
 border-radius:20px;
 margin:10px;
 }
@@ -61,26 +68,15 @@ border-radius:15px;
 box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
-.heart{
-position:absolute;
-font-size:20px;
-animation:float 6s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh);opacity:0;}
-50%{opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
-}
-
 </style>
 
 </head>
+
 <body>
 
 <div class="container">
 
-<h1 id="question">Are you still angry with me? 🥺</h1>
+<h1 id="question">Still angry? 🥺👉👈</h1>
 
 <div id="images"></div>
 
@@ -91,7 +87,7 @@ animation:float 6s linear infinite;
 
 <div id="apology">
 
-<h2>Yay ❤️ She forgave me</h2>
+<h2>Yay ❤️ Finally you forgave me</h2>
 
 <p>
 I know I might have hurt you and I'm truly sorry for that.
@@ -127,7 +123,7 @@ let count = 0;
 
 function stillAngry(){
 
-document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
+count++;
 
 const img = document.createElement("img");
 
@@ -135,65 +131,22 @@ img.src = (count % 8 + 1) + ".gif";
 
 document.getElementById("images").appendChild(img);
 
-count++;
-
-createHeart();
+if(count >= 10){
+document.getElementById("question").innerHTML = "I deserve this but I'm really sorry 😭";
+}
+else if(count >= 5){
+document.getElementById("question").innerHTML = "Okay okay I get it you're angry 🥲";
+}
+else{
+document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
+}
 
 }
 
 function forgive(){
 
 document.querySelector(".container").style.display="none";
-
 document.getElementById("apology").style.display="block";
-
-confetti();
-
-}
-
-function createHeart(){
-
-const heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="💗";
-
-heart.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},6000);
-
-}
-
-function confetti(){
-
-for(let i=0;i<120;i++){
-
-const c=document.createElement("div");
-
-c.style.position="absolute";
-c.style.width="10px";
-c.style.height="10px";
-c.style.background="hsl("+Math.random()*360+"deg,80%,60%)";
-c.style.left=Math.random()*100+"vw";
-c.style.top="-10px";
-c.style.transition="top 3s linear";
-
-document.body.appendChild(c);
-
-setTimeout(()=>{
-c.style.top="100vh";
-},50);
-
-setTimeout(()=>{
-c.remove();
-},3000);
-
-}
 
 }
 
