@@ -123,26 +123,15 @@ I truly hope you can forgive me.
 
 <script>
 
-let count=0;
-
-const images = [
-"https://media.tenor.com/3H6sS6eN8qUAAAAC/dudu-bubu-love.gif",
-"https://media.tenor.com/F8x9sJp9jKcAAAAC/dudu-bubu-sad.gif",
-"https://media.tenor.com/W0Kxq8P2q6QAAAAC/dudu-bubu-hug.gif",
-"https://media.tenor.com/0AVbKGY_MxMAAAAC/bubu-dudu.gif",
-"https://media.tenor.com/X8B0v6K6n1gAAAAC/dudu-bubu.gif",
-"https://media.tenor.com/tc7p1FvO1OAAAAAC/dudu-bubu-hug.gif",
-"https://media.tenor.com/JR6E9T6n0RkAAAAC/dudu-bubu-sorry.gif",
-"https://media.tenor.com/cqQ9RIFVQxAAAAAC/dudu-bubu-cry.gif"
-];
+let count = 0;
 
 function stillAngry(){
 
-document.getElementById("question").innerHTML="Still angry? 🥺👉👈";
+document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
 
-const img=document.createElement("img");
+const img = document.createElement("img");
 
-img.src=images[count % images.length];
+img.src = (count % 8 + 1) + ".gif";
 
 document.getElementById("images").appendChild(img);
 
