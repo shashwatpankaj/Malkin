@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+text-align:center;
+background:linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
+color:#7a2a4d;
+overflow-x:hidden;
+}
+
+.container{
+margin-top:80px;
+}
+
+h1{
+font-size:40px;
+}
+
+button{
+padding:14px 30px;
+font-size:18px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+margin:15px;
+}
+
+#yes{
+background:#ff4d88;
+color:white;
+}
+
+#no{
+background:#6c63ff;
+color:white;
+}
+
+img{
+width:200px;
+border-radius:20px;
+margin:10px;
+}
+
+#apology{
+display:none;
+max-width:700px;
+margin:40px auto;
+font-size:20px;
+line-height:1.6;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1 id="question">Are you still angry with me? 🥺</h1>
+
+<div id="images"></div>
+
+<button id="yes" onclick="stillAngry()">Yes</button>
+<button id="no" onclick="forgive()">No</button>
+
+</div>
+
+<div id="apology">
+
+<h2>Yay ❤️ She forgave me</h2>
+
+<p>
+I know I might have hurt you and I'm truly sorry for that.
+Seeing you upset because of me honestly makes me feel terrible.
+</p>
+
+<p>
+You mean a lot to me and I never want to be the reason
+for your sadness.
+</p>
+
+<p>
+If I could undo what happened, I would without thinking twice.
+But what I can promise is that I will try harder to be better,
+more patient and more understanding.
+</p>
+
+<p>
+You are someone really special in my life and I value you deeply.
+</p>
+
+<p>
+I truly hope you can forgive me.
+</p>
+
+<p><strong>Forever yours ❤️</strong></p>
+
+</div>
+
+<script>
+
+let count=0;
+
+const images = [
+"https://tenor.com/view/dudu-bubu-kisses-gif-14740922443032979291",
+"https://tenor.com/view/sorry-gif-10627323285930200709",
+"https://tenor.com/view/forgive-me-bubu-bubu-angry-bubu-mad-bubu-i'm-sorry-bubu-sorry-gif-1297658326973185745",
+"https://tenor.com/view/sorry-gif-3564704848752285440",
+"https://tenor.com/view/game-gif-10827299706982471611",
+"https://tenor.com/view/dudu-bubu-kisses-gif-14740922443032979291",
+"https://tenor.com/view/dudu-crying-bubu-leaving-bubu-dudu-bubududukiwi-gif-11634850292497286623",
+"https://tenor.com/view/bubu-bubu-dudu-love-cute-panda-gif-16132331359021962088"
+];
+
+function stillAngry(){
+
+document.getElementById("question").innerHTML="Still angry? 🥺👉👈";
+
+const img=document.createElement("img");
+
+img.src=images[count % images.length];
+
+document.getElementById("images").appendChild(img);
+
+count++;
+
+createHeart();
+
+}
+
+function forgive(){
+
+document.querySelector(".container").style.display="none";
+
+document.getElementById("apology").style.display="block";
+
+confetti();
+
+}
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💗";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+const c=document.createElement("div");
+
+c.style.position="absolute";
+c.style.width="10px";
+c.style.height="10px";
+c.style.background="hsl("+Math.random()*360+"deg,80%,60%)";
+c.style.left=Math.random()*100+"vw";
+c.style.top="-10px";
+c.style.transition="top 3s linear";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.style.top="100vh";
+},50);
+
+setTimeout(()=>{
+c.remove();
+},3000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
