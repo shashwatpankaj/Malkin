@@ -9,27 +9,52 @@
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family: 'Segoe UI', sans-serif;
 text-align:center;
-background:linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
+background: linear-gradient(135deg,#ff9ec4,#ffd1dc,#ffc3a0);
 color:#7a2a4d;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .container{
-margin-top:80px;
+max-width:600px;
 }
 
 h1{
-font-size:40px;
+font-size:36px;
+margin-bottom:20px;
+transition:0.3s;
+}
+
+#images{
+margin:20px 0;
+}
+
+img{
+width:220px;
+border-radius:20px;
+transition:0.3s;
+}
+
+.buttons{
+margin-top:20px;
 }
 
 button{
 padding:14px 30px;
 font-size:18px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 cursor:pointer;
-margin:15px;
+margin:10px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
 }
 
 #yes{
@@ -42,43 +67,34 @@ background:#6c63ff;
 color:white;
 }
 
-#images{
-margin:30px auto;
-}
-
-img{
-width:220px;
-border-radius:20px;
-}
-
 #apology{
 display:none;
-max-width:700px;
-margin:40px auto;
+max-width:650px;
 font-size:20px;
 line-height:1.6;
 background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
+padding:35px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<div class="container" id="main">
 
-<h1 id="question">Still angry? 🥺👉👈</h1>
+<h1 id="question">Still angry? 🥺</h1>
 
 <div id="images">
 <img id="sticker" src="1.gif">
 </div>
 
+<div class="buttons">
 <button id="yes" onclick="stillAngry()">Yes</button>
 <button id="no" onclick="forgive()">No</button>
+</div>
 
 </div>
 
@@ -87,27 +103,26 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 <h2>Yay ❤️ She forgave me</h2>
 
 <p>
-I know I might have hurt you and I'm truly sorry for that.
-Seeing you upset because of me honestly makes me feel terrible.
+I know I hurt you and I'm really sorry for that.
+Seeing you upset because of me honestly hurts me too.
 </p>
 
 <p>
 You mean a lot to me and I never want to be the reason
-for your sadness.
+behind your sadness.
 </p>
 
 <p>
-If I could undo what happened, I would without thinking twice.
-But what I can promise is that I will try harder to be better,
-more patient and more understanding.
+I promise I'll try harder to be better, more patient
+and more understanding.
 </p>
 
 <p>
-You are someone really special in my life and I value you deeply.
+You are someone really special in my life.
 </p>
 
 <p>
-I truly hope you can forgive me.
+I truly hope you forgive me.
 </p>
 
 <p><strong>Forever yours ❤️</strong></p>
@@ -118,33 +133,43 @@ I truly hope you can forgive me.
 
 let count = 0;
 
+const stickers = [
+"1.gif",
+"2.gif",
+"3.gif",
+"4.gif",
+"5.gif",
+"6.gif",
+"7.gif",
+"8.gif"
+];
+
 function stillAngry(){
 
 count++;
 
-/* change sticker */
+document.getElementById("sticker").src = stickers[count % stickers.length];
 
-let imgNumber = (count % 8) + 1;
+let question = document.getElementById("question");
 
-document.getElementById("sticker").src = imgNumber + ".gif";
-
-/* change text */
-
-if(count >= 10){
-document.getElementById("question").innerHTML = "I deserve this but I'm really sorry 😭";
+if(count >= 12){
+question.innerHTML = "Okay I deserve this 😭 but I'm really sorry";
 }
-else if(count >= 5){
-document.getElementById("question").innerHTML = "Okay okay I get it you're angry 🥲";
+else if(count >= 8){
+question.innerHTML = "You're REALLY angry huh 🥲";
+}
+else if(count >= 4){
+question.innerHTML = "Okay okay I get it you're angry 😭";
 }
 else{
-document.getElementById("question").innerHTML = "Still angry? 🥺👉👈";
+question.innerHTML = "Still angry? 🥺";
 }
 
 }
 
 function forgive(){
 
-document.querySelector(".container").style.display="none";
+document.getElementById("main").style.display="none";
 document.getElementById("apology").style.display="block";
 
 }
